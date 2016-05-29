@@ -1,7 +1,7 @@
 {
-  "name": "ns-record-scraper",
-  "version": "1.0.0",
-  "description": "a scaper of ns",
+  "name": "ns-schema-scraper",
+  "version": "0.0.5",
+  "description": "Netsuite record schema scraper. JSON output",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,10 +16,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zabaat/ns-record-scraper.git"
+    "url": "git+https://github.com/zabaat/ns-schema-scraper.git"
   },
   "bugs": {
-    "url": "https://github.com/zabaat/ns-record-scraper/issues"
+    "url": "https://github.com/zabaat/ns-schema-scraper/issues"
   },
-  "homepage": "https://github.com/zabaat/ns-record-scraper#readme"
+  "homepage": "https://github.com/zabaat/ns-schema-scraper#readme"
 }

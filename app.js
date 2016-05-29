@@ -48,16 +48,26 @@ let scrapeAndTake = (url,name,cb)=>{
 	    })
 	}
 
-async.eachLimit(urls,1,(url,callback)=>{
-	// console.log("async on url",url)
-	// let name = _.last(url.split("/")).split(".")[0]
-	let name = url
-	url = 'https://system.netsuite.com/help/helpcenter/en_US/srbrowser/Browser2015_2/script/record/' + name +'.html'
-	scrapeAndTake(url,name,(err,data)=>{
-		// console.log("back from scrape")
-		finalObj.push({name:name,fields:data})
-		callback()
-	})
-},(err)=>{
-	console.log("THE FINAL DATA!",JSON.stringify(finalObj,null,2))
-})
+
+module.exports = {
+	nsScrape : function(urlz,cb){
+		if(typeof urlz == "function")
+			cb = urlz
+		urls = _.isArray(urlz) ? urlz : urls
+		async.eachLimit(urls,1,(url,callback)=>{
+			// console.log("async on url",url)
+			// let name = _.last(url.split("/")).split(".")[0]
+			let name = url
+			url = 'https://system.netsuite.com/help/helpcenter/en_US/srbrowser/Browser2015_2/script/record/' + name +'.html'
+			scrapeAndTake(url,name,(err,data)=>{
+				// console.log("back from scrape")
+				finalObj.push({name:name,fields:data})
+				callback()
+			})
+		},(err)=>{
+			// console.log("THE FINAL DATA!",JSON.stringify(finalObj,null,2))
+			cb(err,finalObj)
+		})
+	}
+
+}
